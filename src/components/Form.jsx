@@ -8,7 +8,7 @@ const Form = () => {
   const [player, setPlayer] = useState('John');
   const [points, setPoints] = useState(0);
   const [formData, setFormData] = useState({
-    name: '',
+    selectedName: '',
     selectedOption: 'option1', // default value for the select dropdown
   });
 
@@ -34,16 +34,16 @@ const Form = () => {
 
       <form onSubmit={handleSubmit} className='max-w-sm mx-auto'>
         <label
-          for='species'
+          for='playerName'
           className='block mb-2 text-sm font-medium text-white'
         >
           Player Name
         </label>
         <select
-          name='selectedOption'
-          value={formData.selectedOption}
+          name='selectedName'
+          value={formData.selectedName}
           onChange={handleChange}
-          id='species'
+          id='selectedName'
           className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
         >
           <option value='john'>John</option>
