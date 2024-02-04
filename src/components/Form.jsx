@@ -9,7 +9,7 @@ const Form = () => {
   const [points, setPoints] = useState(0);
   const [formData, setFormData] = useState({
     selectedName: '',
-    selectedOption: 'option1', // default value for the select dropdown
+    selectedOption: '', // default value for the select dropdown
   });
 
   // Handler for form input changes
@@ -31,10 +31,15 @@ const Form = () => {
     <div>
       <h2>{player}</h2>
       <h4>Player points: {points}</h4>
+      {formData.selectedName && (
+        <h5>
+          {formData.selectedName}: {formData.selectedOption}
+        </h5>
+      )}
 
       <form onSubmit={handleSubmit} className='max-w-sm mx-auto'>
         <label
-          for='playerName'
+          htmlFor='playerName'
           className='block mb-2 text-sm font-medium text-white'
         >
           Player Name
@@ -52,7 +57,7 @@ const Form = () => {
         </select>
 
         <label
-          for='species'
+          htmlFor='species'
           className='block mb-2 text-sm font-medium text-white'
         >
           Select your fish
