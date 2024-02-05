@@ -5,6 +5,7 @@ const Form = () => {
   //create one user
   // create a form with dropdown for fish type
   //display user with points
+
   const [player, setPlayer] = useState('John');
   const [points, setPoints] = useState(0);
   const [formData, setFormData] = useState({
@@ -24,13 +25,42 @@ const Form = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Add your form submission logic here
+
     console.log('Form data submitted:', formData);
+    updatePoints(formData.selectedOption);
+  };
+
+  const updatePoints = (fish) => {
+    switch (fish) {
+      case 'walleye':
+        setPoints(points + 5);
+        break;
+
+      case 'perch':
+        setPoints(points + 2);
+        break;
+
+      case 'mudPuppy':
+        setPoints(points - 5);
+        break;
+
+      default:
+        break;
+    }
+
+    console.log(points, 'points');
   };
 
   return (
     <div>
+      <ul className='flex gap-3 mt-3'>
+        <li>Sam </li>
+        <li>Che Point</li>
+        <li>John Point </li>
+      </ul>
       <h2>{player}</h2>
       <h4>Player points: {points}</h4>
+
       {formData.selectedName && (
         <h5>
           {formData.selectedName}: {formData.selectedOption}
@@ -69,10 +99,10 @@ const Form = () => {
           id='species'
           className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
         >
-          <option value='Walleye'>Walleye</option>
+          <option value='walleye'>Walleye</option>
           <option value='perch'>Perch</option>
-          <option value='Mud Puppy'>Mud Puppy</option>
-          <option value='white'>White Fish</option>
+          <option value='mudPuppy'>Mud Puppy</option>
+          <option value='whiteFish'>White Fish</option>
         </select>
         <input
           className='text-purple-700 hover:text-white border border-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-purple-400 dark:text-purple-400 dark:hover:text-white dark:hover:bg-purple-500 dark:focus:ring-purple-900'
