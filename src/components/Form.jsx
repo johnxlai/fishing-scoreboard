@@ -6,7 +6,23 @@ const Form = () => {
   // create a form with dropdown for fish type
   //display user with points
 
-  const [player, setPlayer] = useState('John');
+  const [players, setPlayers] = useState([
+    {
+      id: 1,
+      name: 'Che',
+      points: 0,
+    },
+    {
+      id: 2,
+      name: 'Sam',
+      points: 0,
+    },
+    {
+      id: 3,
+      name: 'John',
+      points: 0,
+    },
+  ]);
   const [points, setPoints] = useState(0);
   const [formData, setFormData] = useState({
     selectedName: '',
@@ -51,14 +67,19 @@ const Form = () => {
     console.log(points, 'points');
   };
 
+  const showScoreBoard = () => {};
+
   return (
     <div>
       <ul className='flex gap-3 mt-3'>
-        <li>Sam </li>
-        <li>Che Point</li>
-        <li>John Point </li>
+        {players.map((player) => (
+          <li key={player.id}>
+            {player.name} : {player.points}
+          </li>
+        ))}
       </ul>
-      <h2>{player}</h2>
+
+      {/* <h2>{player}</h2> */}
       <h4>Player points: {points}</h4>
 
       {formData.selectedName && (
