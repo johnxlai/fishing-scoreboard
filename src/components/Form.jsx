@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 //fishing scoreboard will contain a form to add points to a player
 //form will contain a select dropdown to select a player and a fish
@@ -48,6 +48,15 @@ const Form = () => {
     selectedOption: '', // default value for the select dropdown
   });
 
+  const [storedValues, setStoredValues] = useState(() => {
+    const storedPlayers = localStorage.getItem('players');
+    return storedPlayers ? JSON.parse(storedPlayers) : players;
+  });
+
+  useEffect(() => {
+    localStorage.setItem('players', JSON.stringify(storedValues));
+  }, [storedValues]);
+
   // Handler for form input changes
   const handleChange = (e) => {
     setFormData({
@@ -82,6 +91,7 @@ const Form = () => {
 
     setPlayers(updatePlayers);
     resetField();
+    setStoredValues(updatePlayers);
   };
 
   return (
