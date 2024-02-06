@@ -61,31 +61,43 @@ const Form = () => {
     e.preventDefault();
     // Add your form submission logic here
     console.log('Form data submitted:', formData);
-    updatePoints(formData.selectedOption);
+
+    updatePoints(formData.selectedName, formData.selectedOption);
   };
 
-  const updatePoints = (fish) => {
+  const updatePoints = (player, fish) => {
+    console.log(player, fish, 'player');
+
+    setPoints(0);
+
     switch (fish) {
       case 'walleye':
-        setPoints(points + 5);
+        setPoints(5);
         break;
 
       case 'perch':
-        setPoints(points + 2);
+        setPoints(2);
         break;
 
       case 'mudPuppy':
-        setPoints(points - 5);
+        setPoints(-5);
         break;
 
       default:
         break;
     }
 
+    updateScoreBoard(player);
     console.log(points, 'points');
   };
 
-  const showScoreBoard = () => {};
+  const updateScoreBoard = (player) => {
+    let updatePlayer = players.find((p) => p.name === player);
+    console.log(points);
+    // updatePlayer.points += points;
+
+    setPlayers([...players, updatePlayer]);
+  };
 
   return (
     <div>
