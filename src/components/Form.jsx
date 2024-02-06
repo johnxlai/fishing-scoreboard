@@ -42,6 +42,7 @@ const Form = () => {
       points: 0,
     },
   ]);
+
   const [points, setPoints] = useState(0);
   const [formData, setFormData] = useState({
     selectedName: '',
@@ -62,39 +63,11 @@ const Form = () => {
     // Add your form submission logic here
     console.log('Form data submitted:', formData);
 
-    updatePoints(formData.selectedName, formData.selectedOption);
-  };
-
-  const updatePoints = (player, fish) => {
-    setPoints(0);
-
-    switch (fish) {
-      case 'walleye':
-        setPoints(5);
-        break;
-
-      case 'perch':
-        setPoints(2);
-        break;
-
-      case 'mudPuppy':
-        setPoints(-5);
-        break;
-
-      default:
-        break;
-    }
-
-    updateScoreBoard(player);
-  };
-
-  const updateScoreBoard = (player) => {
-    //find the correct player and update their points
     const updatePlayers = players.map((p) => {
-      if (p.name === player) {
+      if (p.name === formData.selectedName) {
         return {
           ...p,
-          points: p.points + points,
+          points: p.points + parseInt(formData.selectedOption),
         };
       } else {
         return p;
@@ -102,8 +75,6 @@ const Form = () => {
     });
 
     setPlayers(updatePlayers);
-
-    console.log(players, 'players');
   };
 
   return (
@@ -115,8 +86,6 @@ const Form = () => {
           </li>
         ))}
       </ul>
-
-      <h4>Player points: {points}</h4>
 
       {formData.selectedName && (
         <h5>
@@ -141,6 +110,7 @@ const Form = () => {
           id='playerName'
           className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mb-3'
         >
+          <option value=''>Select player name</option>
           <option value='john'>John</option>
           <option value='che'>Che</option>
           <option value='sam'>Sam</option>
@@ -159,10 +129,12 @@ const Form = () => {
           id='species'
           className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mb-4'
         >
-          <option value='walleye'>Walleye</option>
-          <option value='perch'>Perch</option>
-          <option value='mudPuppy'>Mud Puppy</option>
-          <option value='whiteFish'>White Fish</option>
+          <option value='0'>Select a fish</option>
+          <option value='5'>Walleye</option>
+          <option value='3'>Perch</option>
+          <option value='4'>Pike</option>
+          <option value='-5'>Mud Puppy</option>
+          <option value='5'>White Fish</option>
         </select>
         <input
           className='text-purple-700 hover:text-white border border-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 w-full uppercase tracking-wider'
