@@ -13,32 +13,32 @@ const Form = () => {
   const [players, setPlayers] = useState([
     {
       id: 1,
-      name: 'Che',
+      name: 'che',
       points: 0,
     },
     {
       id: 2,
-      name: 'Sam',
+      name: 'sam',
       points: 0,
     },
     {
       id: 3,
-      name: 'John',
+      name: 'john',
       points: 0,
     },
     {
       id: 4,
-      name: 'Dre',
+      name: 'dre',
       points: 0,
     },
     {
       id: 5,
-      name: 'Dennis',
+      name: 'dennis',
       points: 0,
     },
     {
       id: 6,
-      name: 'Jackal',
+      name: 'jackal',
       points: 0,
     },
   ]);
@@ -66,8 +66,6 @@ const Form = () => {
   };
 
   const updatePoints = (player, fish) => {
-    console.log(player, fish, 'player');
-
     setPoints(0);
 
     switch (fish) {
@@ -88,15 +86,24 @@ const Form = () => {
     }
 
     updateScoreBoard(player);
-    console.log(points, 'points');
   };
 
   const updateScoreBoard = (player) => {
-    let updatePlayer = players.find((p) => p.name === player);
-    console.log(points);
-    // updatePlayer.points += points;
+    //find the correct player and update their points
+    const updatePlayers = players.map((p) => {
+      if (p.name === player) {
+        return {
+          ...p,
+          points: p.points + points,
+        };
+      } else {
+        return p;
+      }
+    });
 
-    setPlayers([...players, updatePlayer]);
+    setPlayers(updatePlayers);
+
+    console.log(players, 'players');
   };
 
   return (
