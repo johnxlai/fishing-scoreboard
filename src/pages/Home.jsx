@@ -9,9 +9,9 @@ export default function Home() {
       <main>
         <section className='bg-dark'>
           <div className='flex flex-col items-center justify-center min-h-screen text-white layout'>
-            <h1>Fishing ScoreBoard</h1>
+            <h1 class='mb-5'>Fishing ScoreBoard</h1>
             <Form />
-            <footer className=''>© {new Date().getFullYear()} </footer>
+            <footer className='my-3'>🐟🐟🐟</footer>
           </div>
         </section>
       </main>

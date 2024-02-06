@@ -43,7 +43,6 @@ const Form = () => {
     },
   ]);
 
-  const [points, setPoints] = useState(0);
   const [formData, setFormData] = useState({
     selectedName: '',
     selectedOption: '', // default value for the select dropdown
@@ -87,6 +86,10 @@ const Form = () => {
 
   return (
     <div>
+      <h2 class='bg-purple-500 text-white text-center rounded-md p-3 text-base'>
+        1st {players[0].name}
+      </h2>
+
       <ul className='flex gap-3 mt-3'>
         {players
           .sort((a, b) => b.points - a.points)
@@ -151,13 +154,22 @@ const Form = () => {
           <option value='5'>White Fish</option>
         </select>
         <button
-          className='disabled:opacity-80 disabled:bg-gray-500 disabled:border-gray-600 text-white hover:text-white border border-purple-700 bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 w-full uppercase tracking-wider '
+          className='disabled:cursor-not-allowed disabled:opacity-80 disabled:bg-gray-500 disabled:border-gray-600 text-white hover:text-white border border-purple-700 bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 w-full uppercase tracking-wider '
           type='submit'
           disabled={!formData.selectedOption || !formData.selectedName}
         >
           Add
         </button>
       </form>
+
+      <div class='flex items-center justify-center m-3'>
+        <span class='bg-purple-800 text-purple-300 py-1 px-2 uppercase font-bold text-sm'>
+          Total Points:
+        </span>
+        <span class='bg-purple-400 text-white py-1 px-2 uppercase font-bold text-sm'>
+          {players.reduce((acc, player) => acc + player.points, 0)}
+        </span>
+      </div>
     </div>
   );
 };
