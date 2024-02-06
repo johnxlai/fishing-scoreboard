@@ -13,32 +13,32 @@ const Form = () => {
   const [players, setPlayers] = useState([
     {
       id: 1,
-      name: 'che',
+      name: 'Che',
       points: 0,
     },
     {
       id: 2,
-      name: 'sam',
+      name: 'Sam',
       points: 0,
     },
     {
       id: 3,
-      name: 'john',
+      name: 'John',
       points: 0,
     },
     {
       id: 4,
-      name: 'dre',
+      name: 'Dre',
       points: 0,
     },
     {
       id: 5,
-      name: 'dennis',
+      name: 'Dennis',
       points: 0,
     },
     {
       id: 6,
-      name: 'jackal',
+      name: 'Jackal',
       points: 0,
     },
   ]);
@@ -88,11 +88,13 @@ const Form = () => {
   return (
     <div>
       <ul className='flex gap-3 mt-3'>
-        {players.map((player) => (
-          <li key={player.id}>
-            {player.name} : {player.points}
-          </li>
-        ))}
+        {players
+          .sort((a, b) => b.points - a.points)
+          .map((player) => (
+            <li key={player.id}>
+              {player.name} : {player.points}
+            </li>
+          ))}
       </ul>
 
       {formData.selectedName && (
@@ -119,9 +121,13 @@ const Form = () => {
           className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mb-3'
         >
           <option value=''>Select player name</option>
-          <option value='john'>John</option>
-          <option value='che'>Che</option>
-          <option value='sam'>Sam</option>
+          {players.map((player) => {
+            return (
+              <option key={player.id} value={player.name}>
+                {player.name}
+              </option>
+            );
+          })}
         </select>
 
         <label
