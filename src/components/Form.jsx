@@ -57,6 +57,13 @@ const Form = () => {
     });
   };
 
+  const resetField = () => {
+    setFormData({
+      selectedName: '',
+      selectedOption: '',
+    });
+  };
+
   // Handler for form submission
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -75,6 +82,7 @@ const Form = () => {
     });
 
     setPlayers(updatePlayers);
+    resetField();
   };
 
   return (
@@ -129,18 +137,20 @@ const Form = () => {
           id='species'
           className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mb-4'
         >
-          <option value='0'>Select a fish</option>
+          <option value=''>Select a fish</option>
           <option value='5'>Walleye</option>
           <option value='3'>Perch</option>
           <option value='4'>Pike</option>
           <option value='-5'>Mud Puppy</option>
           <option value='5'>White Fish</option>
         </select>
-        <input
-          className='text-purple-700 hover:text-white border border-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 w-full uppercase tracking-wider'
+        <button
+          className='disabled:opacity-80 disabled:bg-gray-500 disabled:border-gray-600 text-white hover:text-white border border-purple-700 bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 w-full uppercase tracking-wider '
           type='submit'
-          value='Add'
-        />
+          disabled={!formData.selectedOption || !formData.selectedName}
+        >
+          Add
+        </button>
       </form>
     </div>
   );
