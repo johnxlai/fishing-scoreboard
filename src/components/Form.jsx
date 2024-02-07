@@ -100,12 +100,22 @@ const Form = () => {
         1st {players[0].name}
       </h2>
 
-      <ul className='flex gap-3 mt-3'>
+      <ul className='flex flex-wrap justify-center gap-3 mt-3'>
         {players
           .sort((a, b) => b.points - a.points)
-          .map((player) => (
-            <li key={player.id}>
-              {player.name} : {player.points}
+          .map((player, i) => (
+            <li
+              key={player.id}
+              className='bg-purple-500 flex gap-3 justify-between items-center p-3 rounded-lg text-white text-sm '
+            >
+              <span className=''>{i + 1}</span>
+              <span className='font-bold uppercas'>{player.name}</span>
+              <div className='flex flex-col justify-center items-center bg-purple-800 p-2 rounded-sm'>
+                <span className='text-purple-100 font-bold text-xs'>
+                  Points:
+                </span>
+                <span className='font-bold'>{player.points}</span>
+              </div>
             </li>
           ))}
       </ul>
