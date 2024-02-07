@@ -96,7 +96,7 @@ const Form = () => {
 
   return (
     <div>
-      <h2 class='bg-purple-500 text-white text-center rounded-md p-3 text-base'>
+      <h2 className='bg-purple-500 text-white text-center rounded-md p-3 text-base'>
         1st {players[0].name}
       </h2>
 
@@ -172,11 +172,11 @@ const Form = () => {
         </button>
       </form>
 
-      <div class='flex items-center justify-center m-3'>
-        <span class='bg-purple-800 text-purple-300 py-1 px-2 uppercase font-bold text-sm'>
+      <div className='flex items-center justify-center m-3'>
+        <span className='bg-purple-800 text-purple-300 py-1 px-2 uppercase font-bold text-sm'>
           Total Points:
         </span>
-        <span class='bg-purple-400 text-white py-1 px-2 uppercase font-bold text-sm'>
+        <span className='bg-purple-400 text-white py-1 px-2 uppercase font-bold text-sm'>
           {players.reduce((acc, player) => acc + player.points, 0)}
         </span>
       </div>
