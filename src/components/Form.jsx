@@ -95,40 +95,10 @@ const Form = () => {
   };
 
   return (
-    <div>
-      <h2 className='bg-purple-500 text-white text-center rounded-md p-3 text-base'>
-        1st {players[0].name}
-      </h2>
-
-      <ul className='flex flex-wrap justify-center gap-3 mt-3'>
-        {players
-          .sort((a, b) => b.points - a.points)
-          .map((player, i) => (
-            <li
-              key={player.id}
-              className='bg-purple-500 flex gap-3 justify-between items-center p-3 rounded-lg text-white text-sm '
-            >
-              <span className=''>{i + 1}</span>
-              <span className='font-bold uppercas'>{player.name}</span>
-              <div className='flex flex-col justify-center items-center bg-purple-800 p-2 rounded-sm'>
-                <span className='text-purple-100 font-bold text-xs'>
-                  Points:
-                </span>
-                <span className='font-bold'>{player.points}</span>
-              </div>
-            </li>
-          ))}
-      </ul>
-
-      {formData.selectedName && (
-        <h5>
-          {formData.selectedName}: {formData.selectedOption}
-        </h5>
-      )}
-
+    <div className='flex flex-col w-full'>
       <form
         onSubmit={handleSubmit}
-        className='max-w-sm mx-auto bg-green-600 p-5 mt-5 rounded-md'
+        className='max-w-sm mx-auto bg-green-600 p-5 mt-5 rounded-md w-full'
       >
         <label
           htmlFor='playerName'
@@ -181,6 +151,32 @@ const Form = () => {
           Add
         </button>
       </form>
+
+      <ul className='flex flex-col flex-wrap justify-center gap-3 mt-3'>
+        {players
+          .sort((a, b) => b.points - a.points)
+          .map((player, i) => (
+            <li
+              key={player.id}
+              className='bg-purple-500 flex gap-3 justify-between items-center p-3 rounded-lg text-white text-sm '
+            >
+              <span className=''>{i + 1}</span>
+              <span className='font-bold uppercase'>{player.name}</span>
+              <div className='flex flex-col justify-center items-center bg-purple-800 p-2 rounded-sm'>
+                <span className='text-purple-100 font-bold text-xs'>
+                  Points:
+                </span>
+                <span className='font-bold'>{player.points}</span>
+              </div>
+            </li>
+          ))}
+      </ul>
+
+      {formData.selectedName && (
+        <h5>
+          {formData.selectedName}: {formData.selectedOption}
+        </h5>
+      )}
 
       <div className='flex items-center justify-center m-3'>
         <span className='bg-purple-800 text-purple-300 py-1 px-2 uppercase font-bold text-sm'>
