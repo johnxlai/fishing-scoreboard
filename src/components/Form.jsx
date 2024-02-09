@@ -50,12 +50,10 @@ const Form = () => {
 
   const [storedValues, setStoredValues] = useState(() => {
     const storedPlayers = localStorage.getItem('players');
-    console.log(storedPlayers);
-    return storedPlayers ? JSON.parse(storedPlayers) : JSON.parse(storedValues);
+    return storedPlayers ? JSON.parse(storedPlayers) : players;
   });
 
   useEffect(() => {
-    console.log('Stored values:', storedValues);
     localStorage.setItem('players', JSON.stringify(storedValues));
   }, [storedValues]);
 
@@ -85,7 +83,7 @@ const Form = () => {
     // Add your form submission logic here
     console.log('Form data submitted:', formData);
 
-    const updatePlayers = players.map((p) => {
+    const updatePlayers = storedValues.map((p) => {
       if (p.name === formData.selectedName) {
         return {
           ...p,
