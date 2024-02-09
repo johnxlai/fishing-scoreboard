@@ -50,10 +50,12 @@ const Form = () => {
 
   const [storedValues, setStoredValues] = useState(() => {
     const storedPlayers = localStorage.getItem('players');
-    return storedPlayers ? JSON.parse(storedPlayers) : players;
+    console.log(storedPlayers);
+    return storedPlayers ? JSON.parse(storedPlayers) : JSON.parse(storedValues);
   });
 
   useEffect(() => {
+    console.log('Stored values:', storedValues);
     localStorage.setItem('players', JSON.stringify(storedValues));
   }, [storedValues]);
 
@@ -70,6 +72,11 @@ const Form = () => {
       selectedName: '',
       selectedOption: '',
     });
+  };
+
+  const clearLocalStorage = () => {
+    localStorage.clear();
+    setStoredValues(players);
   };
 
   // Handler for form submission
@@ -153,7 +160,7 @@ const Form = () => {
       </form>
 
       <ul className='flex flex-col flex-wrap justify-center gap-3 mt-3'>
-        {players
+        {storedValues
           .sort((a, b) => b.points - a.points)
           .map((player, i) => (
             <li
@@ -183,9 +190,13 @@ const Form = () => {
           Total Points:
         </span>
         <span className='bg-purple-400 text-white py-1 px-2 uppercase font-bold text-sm'>
-          {players.reduce((acc, player) => acc + player.points, 0)}
+          {storedValues.reduce((acc, player) => acc + player.points, 0)}
         </span>
       </div>
+
+      <button onClick={() => clearLocalStorage()} className='bg-purple-300'>
+        Reset
+      </button>
     </div>
   );
 };
