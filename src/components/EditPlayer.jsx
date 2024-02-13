@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { db } from '../lib/init-firebase';
 import { doc, updateDoc } from 'firebase/firestore';
 
-const EditMovie = () => {
+const EditPlayer = () => {
   const [name, setName] = useState('');
   const [id, setId] = useState('');
 
@@ -12,7 +12,7 @@ const EditMovie = () => {
 
     if (name === '' || id === '') return;
 
-    const docRef = doc(db, 'movies', id);
+    const docRef = doc(db, 'players', id);
     updateDoc(docRef, { name })
       .then((res) => {
         console.log(res);
@@ -50,4 +50,4 @@ const EditMovie = () => {
   );
 };
 
-export default EditMovie;
+export default EditPlayer;

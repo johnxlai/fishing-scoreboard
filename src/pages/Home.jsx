@@ -2,10 +2,10 @@ import React from 'react';
 
 // import CustomLink from '@/components/CustomLink';
 import Form from '@/components/Form';
-import ListMovies from '@/components/ListMovies';
+// import ListMovies from '@/components/ListMovies';
 import RealTimeMovies from '@/components/RealTimeMovies';
-import AddMovie from '@/components/AddMovie';
-import EditMovie from '@/components/EditMovie';
+import AddPlayer from '@/components/AddPlayer';
+import EditPlayer from '@/components/EditPlayer';
 
 export default function Home() {
   return (
@@ -16,8 +16,8 @@ export default function Home() {
             <h1 className='mt-5'>Fishing Scoreboard</h1>
             {/* <ListMovies /> */}
             <RealTimeMovies />
-            <AddMovie />
-            <EditMovie />
+            <AddPlayer />
+            <EditPlayer />
             <Form />
             <footer className='my-3'>🐟🐟🐟</footer>
           </div>

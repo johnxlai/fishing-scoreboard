@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { doc, getDocs, deleteDoc } from 'firebase/firestore';
 import { db } from '../lib/init-firebase';
-import { moviesCollectionRef } from '../lib/firestore.collections';
+import { playersCollectionRef } from '../lib/firestore.collections';
 
 const ListMovies = () => {
   const [movies, setMovies] = useState([]);
@@ -15,7 +15,7 @@ const ListMovies = () => {
   }, [movies]);
 
   function getMovies() {
-    getDocs(moviesCollectionRef)
+    getDocs(playersCollectionRef)
       .then((res) => {
         console.log(res);
 
@@ -29,17 +29,17 @@ const ListMovies = () => {
       .catch((error) => console.error(error.message));
   }
 
-  function deleteMovie(id) {
-    const docRef = doc(db, 'movies', id);
-    deleteDoc(docRef)
-      .then(() => {
-        console.log('Document successfully deleted!');
-        // getMovies();
-      })
-      .catch((error) => {
-        console.error('Error removing document: ', error.message);
-      });
-  }
+  // function deleteMovie(id) {
+  //   const docRef = doc(db, 'players', id);
+  //   deleteDoc(docRef)
+  //     .then(() => {
+  //       console.log('Document successfully deleted!');
+  //       // getMovies();
+  //     })
+  //     .catch((error) => {
+  //       console.error('Error removing document: ', error.message);
+  //     });
+  // }
   return (
     <div>
       <h4>ListMovies</h4>

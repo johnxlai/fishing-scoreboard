@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { onSnapshot, doc, getDocs, deleteDoc } from 'firebase/firestore';
 import { db } from '../lib/init-firebase';
-import { moviesCollectionRef } from '../lib/firestore.collections';
+import { playersCollectionRef } from '../lib/firestore.collections';
 
 const RealTimeMovies = () => {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
-    const unsubscribe = onSnapshot(moviesCollectionRef, (snapshot) => {
+    const unsubscribe = onSnapshot(playersCollectionRef, (snapshot) => {
       const moviesData = snapshot.docs.map((doc) => ({
         id: doc.id,
         data: doc.data(),
@@ -21,7 +21,7 @@ const RealTimeMovies = () => {
   }, []);
 
   function deleteMovie(id) {
-    const docRef = doc(db, 'movies', id);
+    const docRef = doc(db, 'players', id);
     deleteDoc(docRef)
       .then(() => {
         console.log('Document successfully deleted!');
