@@ -16,6 +16,7 @@ const AddMovie = () => {
     })
       .then((res) => {
         console.log(res.id);
+        //clear input fields
         setName('');
       })
       .catch((err) => {

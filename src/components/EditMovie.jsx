@@ -14,7 +14,12 @@ const EditMovie = () => {
 
     const docRef = doc(db, 'movies', id);
     updateDoc(docRef, { name })
-      .then((res) => console.log(res))
+      .then((res) => {
+        console.log(res);
+        //clear input fields
+        setName('');
+        setId('');
+      })
       .catch((err) => console.error('Error updating document: ', err.message));
   }
 
