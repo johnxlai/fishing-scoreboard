@@ -32,6 +32,7 @@ const ListMovies = () => {
   return (
     <div>
       <h4>ListMovies</h4>
+      <button onClick={() => getMovies()}>Refresh Movies</button>
       <ul>
         {movies.map((movie) => (
           <li key={movie.id}>{movie.data.name}</li>
