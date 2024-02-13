@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { collection, getDocs } from 'firebase/firestore';
-import { db } from '../lib/init-firebase';
+import { getDocs } from 'firebase/firestore';
+import { moviesCollectionRef } from '../lib/firestore.collections';
 
 const ListMovies = () => {
   const [movies, setMovies] = useState([]);
@@ -14,7 +14,6 @@ const ListMovies = () => {
   }, [movies]);
 
   function getMovies() {
-    const moviesCollectionRef = collection(db, 'movies');
     getDocs(moviesCollectionRef)
       .then((res) => {
         console.log(res);
@@ -35,7 +34,9 @@ const ListMovies = () => {
       <button onClick={() => getMovies()}>Refresh Movies</button>
       <ul>
         {movies.map((movie) => (
-          <li key={movie.id}>{movie.data.name}</li>
+          <li key={movie.id}>
+            {movie.id} : {movie.data.name}
+          </li>
         ))}
       </ul>
     </div>
