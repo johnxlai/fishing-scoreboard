@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { addDoc } from 'firebase/firestore';
 import { moviesCollectionRef } from '../lib/firestore.collections';
+
 const AddMovie = () => {
   const [name, setName] = useState('');
 

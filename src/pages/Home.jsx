@@ -4,6 +4,7 @@ import React from 'react';
 import Form from '@/components/Form';
 import ListMovies from '@/components/ListMovies';
 import AddMovie from '@/components/AddMovie';
+import EditMovie from '@/components/EditMovie';
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
             <h1 className='mt-5'>Fishing Scoreboard</h1>
             <ListMovies />
             <AddMovie />
+            <EditMovie />
             <Form />
             <footer className='my-3'>🐟🐟🐟</footer>
           </div>
