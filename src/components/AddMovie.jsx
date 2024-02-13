@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { addDoc, collection } from 'firebase/firestore';
+import { db } from '../lib/init-firebase';
 
 const AddMovie = () => {
   const [name, setName] = useState('');
@@ -9,7 +11,17 @@ const AddMovie = () => {
 
     if (name === '') return;
 
-    alert(name);
+    const moviesCollectionRef = collection(db, 'movies');
+
+    addDoc(moviesCollectionRef, {
+      name,
+    })
+      .then((res) => {
+        console.log(res.id);
+      })
+      .catch((err) => {
+        console.error('Error writing document: ', err.message);
+      });
   }
 
   return (
