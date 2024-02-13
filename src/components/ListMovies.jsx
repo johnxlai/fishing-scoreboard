@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { getDocs } from 'firebase/firestore';
+import { doc, getDocs, deleteDoc } from 'firebase/firestore';
+import { db } from '../lib/init-firebase';
 import { moviesCollectionRef } from '../lib/firestore.collections';
 
 const ListMovies = () => {
@@ -28,17 +29,21 @@ const ListMovies = () => {
       .catch((error) => console.error(error.message));
   }
 
+  function deleteMovie(id) {
+    const docRef = doc(db, 'movies', id);
+    deleteDoc(docRef)
+      .then(() => {
+        console.log('Document successfully deleted!');
+        // getMovies();
+      })
+      .catch((error) => {
+        console.error('Error removing document: ', error.message);
+      });
+  }
   return (
     <div>
       <h4>ListMovies</h4>
       <button onClick={() => getMovies()}>Refresh Movies</button>
-      <ul>
-        {movies.map((movie) => (
-          <li key={movie.id}>
-            {movie.id} : {movie.data.name}
-          </li>
-        ))}
-      </ul>
     </div>
   );
 };
