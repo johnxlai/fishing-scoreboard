@@ -25,9 +25,9 @@ const EditPlayer = () => {
 
   return (
     <div>
-      <h4>Edit movie</h4>
+      <h4>Edit Player Points</h4>
       <form onSubmit={handleSubmit}>
-        <label htmlFor='id'>Movie id</label>
+        <label htmlFor='id'>Player Id</label>
         <input
           id='id'
           className='text-green-600'
@@ -36,7 +36,7 @@ const EditPlayer = () => {
           onChange={(e) => setId(e.target.value)}
         />
 
-        <label htmlFor='name'>Movie Name</label>
+        <label htmlFor='name'>Player Name</label>
         <input
           id='name'
           className='text-green-600'
@@ -44,7 +44,7 @@ const EditPlayer = () => {
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
-        <button type='submit'>Update movie</button>
+        <button type='submit'>Update player</button>
       </form>
     </div>
   );

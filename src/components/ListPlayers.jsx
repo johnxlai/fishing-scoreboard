@@ -3,7 +3,7 @@ import { doc, getDocs, deleteDoc } from 'firebase/firestore';
 import { db } from '../lib/init-firebase';
 import { playersCollectionRef } from '../lib/firestore.collections';
 
-const ListMovies = () => {
+const ListPlayers = () => {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
@@ -42,10 +42,10 @@ const ListMovies = () => {
   // }
   return (
     <div>
-      <h4>ListMovies</h4>
+      <h4>ListPlayers</h4>
       <button onClick={() => getMovies()}>Refresh Movies</button>
     </div>
   );
 };
 
-export default ListMovies;
+export default ListPlayers;

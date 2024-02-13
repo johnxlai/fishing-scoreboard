@@ -3,16 +3,16 @@ import { onSnapshot, doc, getDocs, deleteDoc } from 'firebase/firestore';
 import { db } from '../lib/init-firebase';
 import { playersCollectionRef } from '../lib/firestore.collections';
 
-const RealTimeMovies = () => {
-  const [movies, setMovies] = useState([]);
+const RealTimePlayers = () => {
+  const [players, setPlayers] = useState([]);
 
   useEffect(() => {
     const unsubscribe = onSnapshot(playersCollectionRef, (snapshot) => {
-      const moviesData = snapshot.docs.map((doc) => ({
+      const playersData = snapshot.docs.map((doc) => ({
         id: doc.id,
         data: doc.data(),
       }));
-      setMovies(moviesData);
+      setPlayers(playersData);
     });
 
     return () => {
@@ -20,7 +20,7 @@ const RealTimeMovies = () => {
     };
   }, []);
 
-  function deleteMovie(id) {
+  function deletePlayer(id) {
     const docRef = doc(db, 'players', id);
     deleteDoc(docRef)
       .then(() => {
@@ -33,12 +33,13 @@ const RealTimeMovies = () => {
 
   return (
     <div>
-      <h4>Real time movies</h4>
+      <h4>Real time Players</h4>
       <ul>
-        {movies.map((movie) => (
-          <li key={movie.id}>
-            {movie.id} : {movie.data.name}
-            <button onClick={() => deleteMovie(movie.id)}>delete</button>
+        {players.map((player) => (
+          <li key={player.id}>
+            {player.id} : {player.data.name}
+            <span className='mx-3'>points: {player.data.points}</span>
+            <button onClick={() => deletePlayer(player.id)}>delete</button>
           </li>
         ))}
       </ul>
@@ -46,4 +47,4 @@ const RealTimeMovies = () => {
   );
 };
 
-export default RealTimeMovies;
+export default RealTimePlayers;
