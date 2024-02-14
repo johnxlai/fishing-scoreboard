@@ -5,6 +5,7 @@ import { doc, updateDoc } from 'firebase/firestore';
 const EditPlayer = () => {
   const [name, setName] = useState('');
   const [id, setId] = useState('');
+  const [points, setPoints] = useState('');
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -13,12 +14,13 @@ const EditPlayer = () => {
     if (name === '' || id === '') return;
 
     const docRef = doc(db, 'players', id);
-    updateDoc(docRef, { name })
+    updateDoc(docRef, { name, points })
       .then((res) => {
         console.log(res);
         //clear input fields
         setName('');
         setId('');
+        setPoints('');
       })
       .catch((err) => console.error('Error updating document: ', err.message));
   }
@@ -26,7 +28,7 @@ const EditPlayer = () => {
   return (
     <div>
       <h4>Edit Player Points</h4>
-      <form onSubmit={handleSubmit}>
+      <form className='flex flex-col' onSubmit={handleSubmit}>
         <label htmlFor='id'>Player Id</label>
         <input
           id='id'
@@ -44,6 +46,16 @@ const EditPlayer = () => {
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
+
+        <label htmlFor='points'>Player Points</label>
+        <input
+          id='points'
+          className='text-green-600'
+          type='text'
+          value={points}
+          onChange={(e) => setPoints(e.target.value)}
+        />
+
         <button type='submit'>Update player</button>
       </form>
     </div>
