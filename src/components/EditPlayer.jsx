@@ -3,23 +3,28 @@ import { db } from '../lib/init-firebase';
 import { doc, updateDoc } from 'firebase/firestore';
 
 const EditPlayer = ({ players }) => {
-  console.log(players);
-
-  // const [players, setPlayers] = useState([props]);
   const [id, setId] = useState('');
-  const [points, setPoints] = useState('');
+  const [newPoints, setNewPoints] = useState('');
+  const [currentPoints, setCurrentPoints] = useState('');
+
+  //find current player point
+  function findCurrentPoints(id) {
+    const player = players.find((player) => player.id === id);
+    setCurrentPoints(player.data.points);
+    console.log(player.data.points, 'current points');
+  }
 
   function handleSubmit(e) {
     e.preventDefault();
 
     const docRef = doc(db, 'players', id);
-    updateDoc(docRef, { points: parseInt(points) + 8 })
-      .then((res) => {
-        console.log(res);
-        //clear input fields
 
+    updateDoc(docRef, { points: currentPoints + parseInt(newPoints) })
+      .then((res) => {
+        // console.log(res);
+        //clear input fields
         setId('');
-        setPoints('');
+        setNewPoints('');
       })
       .catch((err) => console.error('Error updating document: ', err.message));
   }
@@ -34,7 +39,10 @@ const EditPlayer = ({ players }) => {
         <select
           name='selectedName'
           value={id}
-          onChange={(e) => setId(e.target.value)}
+          onChange={(e) => {
+            setId(e.target.value);
+            findCurrentPoints(e.target.value);
+          }}
           id='id'
           className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mb-3'
         >
@@ -42,7 +50,7 @@ const EditPlayer = ({ players }) => {
           {players.map((player) => {
             return (
               <option key={player.id} value={player.id}>
-                {player.data.name} {player.data.points}
+                {player.data.name}
               </option>
             );
           })}
@@ -56,10 +64,9 @@ const EditPlayer = ({ players }) => {
         </label>
         <select
           name='selectedOption'
-          value={points}
+          value={newPoints}
           onChange={(e) => {
-            console.log(e.target.value);
-            setPoints(e.target.value);
+            setNewPoints(e.target.value);
           }}
           id='species'
           className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mb-4'
@@ -75,7 +82,7 @@ const EditPlayer = ({ players }) => {
         <button
           className='disabled:cursor-not-allowed disabled:opacity-80 disabled:bg-gray-500 disabled:border-gray-600 text-white hover:text-white border border-purple-700 bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 w-full uppercase tracking-wider '
           type='submit'
-          disabled={!id || !points}
+          disabled={!id || !newPoints}
         >
           Add
         </button>
