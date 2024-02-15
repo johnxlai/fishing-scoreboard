@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { addDoc } from 'firebase/firestore';
-import { moviesCollectionRef } from '../lib/firestore.collections';
+import { playersCollectionRef } from '../lib/firestore.collections';
 
-const AddMovie = () => {
+const AddPlayer = () => {
   const [name, setName] = useState('');
 
   function handleSubmit(e) {
@@ -11,8 +11,9 @@ const AddMovie = () => {
 
     if (name === '') return;
 
-    addDoc(moviesCollectionRef, {
+    addDoc(playersCollectionRef, {
       name,
+      points,
     })
       .then((res) => {
         console.log(res.id);
@@ -26,9 +27,9 @@ const AddMovie = () => {
 
   return (
     <div>
-      <h4>Add movie</h4>
+      <h4>Add Player</h4>
       <form onSubmit={handleSubmit}>
-        <label htmlFor='name'>Movie Name</label>
+        <label htmlFor='name'>Player Name</label>
         <input
           id='name'
           className='text-green-600'
@@ -36,10 +37,10 @@ const AddMovie = () => {
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
-        <button type='submit'>Add movie</button>
+        <button type='submit'>Add Player</button>
       </form>
     </div>
   );
 };
 
-export default AddMovie;
+export default AddPlayer;
