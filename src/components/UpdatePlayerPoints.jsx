@@ -34,7 +34,7 @@ const EditPlayer = ({ players }) => {
         className='mx-auto bg-purple-800 p-5 mt-5 rounded-md w-full'
         onSubmit={handleSubmit}
       >
-        <label htmlFor='id'>Player Id</label>
+        <label htmlFor='id'>Player Name</label>
         <select
           name='selectedName'
           value={id}
