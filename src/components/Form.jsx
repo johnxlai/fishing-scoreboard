@@ -157,7 +157,7 @@ const Form = () => {
         </button>
       </form>
 
-      <ul className='flex flex-col flex-wrap justify-center gap-3 mt-3'>
+      {/* <ul className='flex flex-col flex-wrap justify-center gap-3 mt-3'>
         {storedValues
           .sort((a, b) => b.points - a.points)
           .map((player, i) => (
@@ -175,9 +175,9 @@ const Form = () => {
               </div>
             </li>
           ))}
-      </ul>
+      </ul> */}
 
-      {formData.selectedName && (
+      {/* {formData.selectedName && (
         <h5>
           {formData.selectedName}: {formData.selectedOption}
         </h5>
@@ -190,11 +190,11 @@ const Form = () => {
         <span className='bg-purple-400 text-white py-1 px-2 uppercase font-bold text-sm'>
           {storedValues.reduce((acc, player) => acc + player.points, 0)}
         </span>
-      </div>
+      </div> */}
 
-      <button onClick={() => clearLocalStorage()} className='bg-purple-300'>
+      {/* <button onClick={() => clearLocalStorage()} className='bg-purple-300'>
         Reset
-      </button>
+      </button> */}
     </div>
   );
 };

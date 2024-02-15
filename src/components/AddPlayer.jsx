@@ -13,6 +13,7 @@ const AddPlayer = () => {
 
     addDoc(playersCollectionRef, {
       name,
+      points,
     })
       .then((res) => {
         console.log(res.id);

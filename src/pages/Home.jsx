@@ -14,10 +14,10 @@ export default function Home() {
         <section className='bg-dark'>
           <div className='flex flex-col items-center justify-center min-h-screen text-white layout'>
             <h1 className='mt-5'>Fishing Scoreboard</h1>
+            <EditPlayer />
             <RealTimePlayers />
             {/* <AddPlayer /> */}
-            <EditPlayer />
-            <Form />
+            {/* <Form /> */}
             <footer className='my-3'>🐟🐟🐟</footer>
           </div>
         </section>
