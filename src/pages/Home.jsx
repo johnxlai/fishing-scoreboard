@@ -18,7 +18,7 @@ export default function Home() {
             <RealTimePlayers />
             {/* <AddPlayer /> */}
             {/* <Form /> */}
-            <footer className='my-3'>🐟🐟🐟</footer>
+            {/* <footer className='my-3'>🐟🐟🐟</footer> */}
           </div>
         </section>
       </main>

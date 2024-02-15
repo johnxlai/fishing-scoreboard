@@ -3,21 +3,19 @@ import { db } from '../lib/init-firebase';
 import { doc, updateDoc } from 'firebase/firestore';
 
 const EditPlayer = () => {
-  const [name, setName] = useState('');
+  // const [name, setName] = useState('');
   const [id, setId] = useState('');
   const [points, setPoints] = useState('');
 
   function handleSubmit(e) {
     e.preventDefault();
 
-    // if (name === '' || id === '') return;
-
     const docRef = doc(db, 'players', id);
-    updateDoc(docRef, { name, points })
+    updateDoc(docRef, { points })
       .then((res) => {
         console.log(res);
         //clear input fields
-        setName('');
+        // setName('');
         setId('');
         setPoints('');
       })
@@ -41,6 +39,9 @@ const EditPlayer = () => {
           <option value=''>Select player Id</option>
           <option key={1} value={1}>
             Sam
+          </option>
+          <option key={5} value={5}>
+            Jackal
           </option>
         </select>
 
@@ -80,6 +81,7 @@ const EditPlayer = () => {
         <button
           className='disabled:cursor-not-allowed disabled:opacity-80 disabled:bg-gray-500 disabled:border-gray-600 text-white hover:text-white border border-purple-700 bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 w-full uppercase tracking-wider '
           type='submit'
+          disabled={!id || !points}
         >
           Add
         </button>
