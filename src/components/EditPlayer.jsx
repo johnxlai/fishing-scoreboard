@@ -4,6 +4,28 @@ import { doc, updateDoc } from 'firebase/firestore';
 
 const EditPlayer = () => {
   // const [name, setName] = useState('');
+  const [players, setPlayers] = useState([
+    {
+      id: 1,
+      name: 'Sam',
+    },
+    {
+      id: 2,
+      name: 'Che',
+    },
+    {
+      id: 3,
+      name: 'John',
+    },
+    {
+      id: 4,
+      name: 'Dre',
+    },
+    {
+      id: 5,
+      name: 'Jackal',
+    },
+  ]);
   const [id, setId] = useState('');
   const [points, setPoints] = useState('');
 
@@ -37,12 +59,13 @@ const EditPlayer = () => {
           className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mb-3'
         >
           <option value=''>Select player Id</option>
-          <option key={1} value={1}>
-            Sam
-          </option>
-          <option key={5} value={5}>
-            Jackal
-          </option>
+          {players.map((player) => {
+            return (
+              <option key={player.id} value={player.id}>
+                {player.name}
+              </option>
+            );
+          })}
         </select>
 
         {/* <label htmlFor='name'>Player Name</label>
