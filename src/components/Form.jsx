@@ -103,7 +103,7 @@ const Form = () => {
     <div className='flex flex-col w-full'>
       <form
         onSubmit={handleSubmit}
-        className='max-w-sm mx-auto bg-green-600 p-5 mt-5 rounded-md w-full'
+        className='max-w-sm mx-auto bg-blue-800 p-5 mt-5 rounded-md w-full'
       >
         <label
           htmlFor='playerName'

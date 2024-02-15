@@ -53,7 +53,7 @@ export default function Home() {
                   .map((player, i) => (
                     <li
                       key={player.id}
-                      className='bg-purple-500 flex gap-3 justify-between items-center p-3 rounded-lg text-white text-sm '
+                      className='bg-gray-700 flex gap-3 justify-between items-center p-3 rounded-lg text-white text-sm '
                     >
                       <span className=''>{i + 1}</span>
                       <span className='font-bold uppercase'>
@@ -61,7 +61,7 @@ export default function Home() {
                       </span>
                       <div className='flex flex-col justify-center items-center bg-purple-800 p-2 rounded-sm'>
                         <span className='text-purple-100 font-bold text-xs'>
-                          Points:
+                          Pts:
                         </span>
                         <span className='font-bold'>{player.data.points}</span>
                       </div>
@@ -73,7 +73,7 @@ export default function Home() {
               </ul>
 
               <div className='flex items-center justify-center m-3'>
-                <span className='bg-purple-800 text-purple-300 py-1 px-2 uppercase font-bold text-sm'>
+                <span className='bg-gray-600 text-purple-300 py-1 px-2 uppercase font-bold text-sm'>
                   Total Points:
                 </span>
                 <span className='bg-purple-400 text-white py-1 px-2 uppercase font-bold text-sm'>

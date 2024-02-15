@@ -31,7 +31,7 @@ const EditPlayer = ({ players }) => {
   return (
     <div className='w-full'>
       <form
-        className='max-w-sm mx-auto bg-green-600 p-5 mt-5 rounded-md w-full'
+        className='mx-auto bg-purple-800 p-5 mt-5 rounded-md w-full'
         onSubmit={handleSubmit}
       >
         <label htmlFor='id'>Player Id</label>
@@ -83,7 +83,7 @@ const EditPlayer = ({ players }) => {
         </select>
 
         <button
-          className='disabled:cursor-not-allowed disabled:opacity-80 disabled:bg-gray-500 disabled:border-gray-600 text-white hover:text-white border border-purple-700 bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 w-full uppercase tracking-wider '
+          className='disabled:cursor-not-allowed disabled:opacity-80 disabled:bg-gray-500 disabled:border-gray-600 text-white hover:text-white border border-green-500 bg-green-500 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 w-full uppercase tracking-wider '
           type='submit'
           disabled={!id || !newPoints}
         >
