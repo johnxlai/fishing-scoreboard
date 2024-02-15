@@ -11,7 +11,7 @@ const EditPlayer = ({ players }) => {
   function findCurrentPoints(id) {
     const player = players.find((player) => player.id === id);
     setCurrentPoints(player.data.points);
-    console.log(player.data.points, 'current points');
+    // console.log(player.data.points, 'current points');
   }
 
   function handleSubmit(e) {
