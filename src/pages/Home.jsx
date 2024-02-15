@@ -20,7 +20,6 @@ export default function Home() {
         data: doc.data(),
       }));
       setPlayers(playersData);
-      console.log(playersData);
     });
 
     return () => {
@@ -45,7 +44,7 @@ export default function Home() {
         <section className='bg-dark'>
           <div className='flex flex-col items-center justify-center min-h-screen text-white layout'>
             <h1 className='mt-5'>Fishing Scoreboard</h1>
-            <EditPlayer />
+            <EditPlayer players={players} />
 
             <div className='w-full'>
               <ul className='flex flex-col flex-wrap justify-center gap-3 mt-3'>

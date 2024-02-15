@@ -2,30 +2,10 @@ import React, { useState } from 'react';
 import { db } from '../lib/init-firebase';
 import { doc, updateDoc } from 'firebase/firestore';
 
-const EditPlayer = () => {
-  // const [name, setName] = useState('');
-  const [players, setPlayers] = useState([
-    {
-      id: 1,
-      name: 'Sam',
-    },
-    {
-      id: 2,
-      name: 'Che',
-    },
-    {
-      id: 3,
-      name: 'John',
-    },
-    {
-      id: 4,
-      name: 'Dre',
-    },
-    {
-      id: 5,
-      name: 'Jackal',
-    },
-  ]);
+const EditPlayer = ({ players }) => {
+  console.log(players);
+
+  // const [players, setPlayers] = useState([props]);
   const [id, setId] = useState('');
   const [points, setPoints] = useState('');
 
@@ -33,11 +13,11 @@ const EditPlayer = () => {
     e.preventDefault();
 
     const docRef = doc(db, 'players', id);
-    updateDoc(docRef, { points })
+    updateDoc(docRef, { points: parseInt(points) + 8 })
       .then((res) => {
         console.log(res);
         //clear input fields
-        // setName('');
+
         setId('');
         setPoints('');
       })
@@ -62,20 +42,11 @@ const EditPlayer = () => {
           {players.map((player) => {
             return (
               <option key={player.id} value={player.id}>
-                {player.name}
+                {player.data.name} {player.data.points}
               </option>
             );
           })}
         </select>
-
-        {/* <label htmlFor='name'>Player Name</label>
-        <input
-          id='name'
-          className='text-green-600'
-          type='text'
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        /> */}
 
         <label
           htmlFor='species'
