@@ -17,7 +17,7 @@ const Form = ({ players }) => {
           .map((player, i) => (
             <li
               key={player.id}
-              className='bg-gray-700 flex gap-3 justify-between items-center p-3 rounded-lg text-white text-sm '
+              className='bg-gray-700 flex flex-col gap-3 justify-between items-center p-3 rounded-lg text-white text-sm '
             >
               <div className='w-full'>
                 <span className=''>{i + 1}</span>
@@ -30,34 +30,33 @@ const Form = ({ players }) => {
                   <span className='font-bold'>{player.data.points}</span>
                 </div>
               </div>
-              <div className='fishes w-full flex flex-col'>
-                <span className='font-bold uppercase mr-2'>
-                  perch: {player.data.perch}
-                </span>
-                <span className='font-bold uppercase mr-2'>
-                  whitefish: {player.data.whitefish}
-                </span>{' '}
-                <span className='font-bold uppercase mr-2'>
-                  walleyeSm: {player.data.walleyeSm}
-                </span>{' '}
-                <span className='font-bold uppercase mr-2'>
-                  walleyeMd: {player.data.walleyeMd}
-                </span>{' '}
-                <span className='font-bold uppercase mr-2'>
-                  walleyeLg: {player.data.walleyeLg}
-                </span>{' '}
-                <span className='font-bold uppercase mr-2'>
-                  pikeBass: {player.data.pikeBass}
-                </span>{' '}
-                <span className='font-bold uppercase mr-2'>
-                  ling: {player.data.ling}
-                </span>{' '}
-                <span className='font-bold uppercase mr-2'>
-                  trout: {player.data.trout}
-                </span>{' '}
-                <span className='font-bold uppercase mr-2'>
-                  mudpuppy: {player.data.mudpuppy}
-                </span>{' '}
+              <div className='fishes w-full flex flex-col overflow-x-auto shadow-md sm:rounded-lg'>
+                <table className='w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400'>
+                  <thead className='text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400'>
+                    <tr>
+                      <th className='px-6 py-3'>Fish</th>
+                      <th>Quantity</th>
+                    </tr>
+                  </thead>
+
+                  {Object.keys(player.data.fishes).map((fish) => {
+                    return (
+                      <tbody>
+                        <tr
+                          key={fish}
+                          className='odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700'
+                        >
+                          <th className='px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white'>
+                            {fish}
+                          </th>
+                          <td className='px-6 py-4'>
+                            {player.data.fishes[fish]}
+                          </td>
+                        </tr>
+                      </tbody>
+                    );
+                  })}
+                </table>
               </div>
               {/* <button onClick={() => deletePlayer(player.id)}>
                         delete
