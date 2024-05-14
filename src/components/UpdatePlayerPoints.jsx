@@ -2,10 +2,24 @@ import React, { useState } from 'react';
 import { db } from '../lib/init-firebase';
 import { doc, updateDoc } from 'firebase/firestore';
 
+const fishPtsSystem = {
+  walleyeKeeper: 5,
+  muskie: 4,
+  walleye: 3,
+  pike: 2,
+  bass: 1,
+  rockBass: -2,
+  longestFish: 3,
+};
+
 const EditPlayer = ({ players }) => {
   const [id, setId] = useState('');
   const [newPoints, setNewPoints] = useState('');
   const [currentPoints, setCurrentPoints] = useState('');
+  const [newFishList, setnewFishList] = useState({
+    walleye: 21120,
+    bass: 1210,
+  });
 
   //find current player point
   function findCurrentPoints(id) {
@@ -14,12 +28,26 @@ const EditPlayer = ({ players }) => {
     // console.log(player.data.points, 'current points');
   }
 
+  //find current player and add the new fish the players fish list
+
+  //Update fish list
+  function updateFishList(id) {
+    const player = players.find((player) => player.id === id);
+    console.log(player.data.fishes, 'fishes');
+    const testFishList = {
+      ...player.data.fishes,
+      bass: 19990,
+    };
+    console.log(testFishList, 'newFishList');
+    setnewFishList(testFishList);
+  }
+
   function handleSubmit(e) {
     e.preventDefault();
     const docRef = doc(db, 'players', id);
     updateDoc(docRef, {
       points: parseInt(currentPoints) + parseInt(newPoints),
-      fishes: { ...fishes, walleye: 50, pike: 2000 },
+      fishes: newFishList,
     })
       .then((res) => {
         // console.log(res);
@@ -43,6 +71,7 @@ const EditPlayer = ({ players }) => {
           onChange={(e) => {
             setId(e.target.value);
             findCurrentPoints(e.target.value);
+            updateFishList(e.target.value);
           }}
           id='id'
           className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mb-3'
