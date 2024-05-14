@@ -18,22 +18,20 @@ const Form = ({ players }) => {
         {players
           .sort((a, b) => b.data.points - a.data.points)
           .map((player, i) => (
-            <li
-              key={player.id}
-              className=' flex flex-col gap-3 justify-between items-center  text-white text-sm '
-            >
+            <li key={player.id} className='  '>
               <div className='w-full'>
-                <div className='rounded-lg bg-green-600'>
-                  <span className='font-bold'>{i + 1}</span>
-                  <span className='font-bold uppercase'>
+                <div className='flex bg-indigo-600'>
+                  <span className='w-1/4 border-r-2 border-indigo-500 flex justify-center items-center py-3'>
+                    {i + 1}
+                  </span>
+                  <span className='uppercase w-2/4 border-r-2 border-indigo-500 flex justify-start ml-5 py-3'>
                     {player.data.name}
                   </span>
-                  <div className=''>
-                    <span className='text-purple-100 font-bold text-xs'>
-                      Pts:
-                    </span>
-                    <span className='font-bold'>{player.data.points}</span>
-                  </div>
+
+                  <span className='w-1/4 flex justify-center items-center py-3'>
+                    {' '}
+                    Total Pts: {player.data.points}
+                  </span>
                 </div>
               </div>
               <div className='fishes w-full flex flex-col overflow-x-auto shadow-md sm:rounded-lg'>
