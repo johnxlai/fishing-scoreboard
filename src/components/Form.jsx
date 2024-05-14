@@ -11,17 +11,17 @@ import React from 'react';
 const Form = ({ players }) => {
   return (
     <div className='w-full'>
-      <h2 className='text-xl font-bold text-purple-300 my-5'>
+      <h2 className='text-xl font-bold text-green-300 mt-8 mb-4 text-center'>
         HOUSEBOAT LEADERBOARD
       </h2>
       <ul className='flex flex-col flex-wrap justify-center gap-3 '>
         {players
           .sort((a, b) => b.data.points - a.data.points)
           .map((player, i) => (
-            <li key={player.id} className='  '>
+            <li key={player.id} className=''>
               <div className='w-full'>
                 <div className='flex bg-green-300 text-green-800 font-bold'>
-                  <span className='flex justify-center items-center py-3 w-1/4 border-r-2 border-green-800 '>
+                  <span className='flex justify-center items-center py-3 w-1/4 border-r-2 border-green-800'>
                     {i + 1}
                   </span>
                   <span className='flex justify-start ml-5 py-3 uppercase w-2/4 border-r-2 border-green-800 font-bold'>
