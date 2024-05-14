@@ -12,20 +12,19 @@ const EditPlayer = ({ players }) => {
   //find current player point
   function findCurrentPoints(id) {
     const player = players.find((player) => player.id === id);
-
     setCurrentPoints(player.data.points);
-    // updateFishList(player);
   }
 
   //Update fish list
   function updateFishList(newFish) {
-    //Update fish list
     const player = players.find((player) => player.id === id);
+    let fishName = '';
+    if (newFish === '5') fishName = 'walleyeKeeper';
 
-    console.log(newFish, 'nothing');
+    if (newFish === '5') console.log(newFish, 'nothing');
     const updateFishPts = {
       ...player.data.fishes,
-      beast: [newFish],
+      [fishName]: 1 + (player.data.fishes[fishName] || 0),
     };
 
     setnewFishList(updateFishPts);
@@ -39,8 +38,6 @@ const EditPlayer = ({ players }) => {
       fishes: newFishList,
     })
       .then((res) => {
-        // console.log(res);
-        //clear input fields
         setId('');
         setNewPoints('');
       })
