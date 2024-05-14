@@ -1,30 +1,19 @@
 import React, { useState } from 'react';
 import { db } from '../lib/init-firebase';
 import { doc, updateDoc } from 'firebase/firestore';
-
-const fishPtsSystem = {
-  walleyeKeeper: 5,
-  muskie: 4,
-  walleye: 3,
-  pike: 2,
-  bass: 1,
-  rockBass: -2,
-  longestFish: 3,
-};
+import fishPtsSystem from '../data/fishList';
 
 const EditPlayer = ({ players }) => {
   const [id, setId] = useState('');
   const [newPoints, setNewPoints] = useState('');
   const [currentPoints, setCurrentPoints] = useState('');
-  const [newFishList, setnewFishList] = useState({
-    walleye: 21120,
-    bass: 1210,
-  });
+  const [newFishList, setnewFishList] = useState({});
 
   //find current player point
   function findCurrentPoints(id) {
     const player = players.find((player) => player.id === id);
     setCurrentPoints(player.data.points);
+
     // console.log(player.data.points, 'current points');
   }
 
