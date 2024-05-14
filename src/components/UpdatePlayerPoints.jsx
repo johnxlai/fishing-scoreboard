@@ -10,19 +10,39 @@ const EditPlayer = ({ players }) => {
   const [newFishList, setnewFishList] = useState({});
   const [currentPlayer, setCurrentPlayer] = useState();
 
-  //find current player point
-  function findCurrentPoints(id) {
-    const player = players.find((player) => player.id === id);
+  const initialFormData = {
+    selectedName: '',
+    selectedOption: '',
+  };
+  const [formData, setFormData] = React.useState(initialFormData);
 
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+    console.log(formData);
+  };
+  // a list of players
+  // on player name change find the current player, update current points and player
+  function findCurrentPlayer(id) {
+    const player = players.find((player) => player.id === id);
+    setCurrentPlayer(player);
     setCurrentPoints(player.data.points);
-    updateFishList(player);
+    console.log(player, 'player');
+    console.log(player.data.points, 'points');
+  }
+  // on fish caught change update the fish list
+  // on submit update the player points and fish list
+
+  function handleIdChange(e) {
+    setId(e.target.value);
+    findCurrentPoints(e.target.value);
+    findCurrentPlayer(e.target.value);
+    updateFishList(e.target.value);
   }
 
   //Update fish list
-  function updateFishList(player) {
+  function updateFishList() {
     //Update fish list
 
-    console.log(newPoints, 'nothing');
     const updateFishPts = {
       ...player.data.fishes,
       beast: newPoints,
@@ -33,6 +53,7 @@ const EditPlayer = ({ players }) => {
 
   function handleSubmit(e) {
     e.preventDefault();
+
     const docRef = doc(db, 'players', id);
     updateDoc(docRef, {
       points: parseInt(currentPoints) + parseInt(newPoints),
@@ -57,11 +78,12 @@ const EditPlayer = ({ players }) => {
         <select
           name='selectedName'
           value={id}
-          onChange={(e) => {
-            setId(e.target.value);
-            findCurrentPoints(e.target.value);
-            // updateFishList(e.target.value);
-          }}
+          onChange={handleChange}
+          // setId(e.target.value);
+          // findCurrentPoints(e.target.value);
+          // findCurrentPlayer(e.target.value);
+          // updateFishList(e.target.value);
+
           id='id'
           className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mb-3'
         >
@@ -84,9 +106,7 @@ const EditPlayer = ({ players }) => {
         <select
           name='selectedOption'
           value={newPoints}
-          onChange={(e) => {
-            setNewPoints(e.target.value);
-          }}
+          onChange={handleChange}
           id='species'
           className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mb-4'
         >
