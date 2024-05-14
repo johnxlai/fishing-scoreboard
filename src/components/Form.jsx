@@ -7,6 +7,7 @@ import React from 'react';
 //Scoreboard will contain a total points for all players
 //Add local storage to store the players and their points
 //Add a reset button to reset the players and their points
+import sam from '../assets/imgs/sam.jpg';
 
 const Form = ({ players }) => {
   return (
@@ -25,6 +26,8 @@ const Form = ({ players }) => {
                     {i + 1}
                   </span>
                   <span className='flex justify-start ml-5 py-3 uppercase w-2/4 border-r border-purple-300 font-bold'>
+                    <img src={sam} alt='' />
+
                     {player.data.name}
                   </span>
 
