@@ -7,7 +7,6 @@ import React from 'react';
 //Scoreboard will contain a total points for all players
 //Add local storage to store the players and their points
 //Add a reset button to reset the players and their points
-import sam from '../assets/imgs/sam.jpg';
 
 const Form = ({ players }) => {
   return (
@@ -20,47 +19,53 @@ const Form = ({ players }) => {
           .sort((a, b) => b.data.points - a.data.points)
           .map((player, i) => (
             <li key={player.id} className=''>
-              <div className='w-full'>
-                <div className='flex bg-gray-600 text-purple-300 font-bold'>
-                  <span className='flex justify-center items-center py-3 w-1/4 border-r border-purple-300'>
+              <div className='w-full bg-gray-600 text-white rounded-lg'>
+                <div className='flex flex-col justify-center items-center relative'>
+                  <span className='absolute z-10 left-2 top-2 bg-purple-600 p-3 rounded-lg'>
                     {i + 1}
                   </span>
-                  <span className='flex justify-start ml-5 py-3 uppercase w-2/4 border-r border-purple-300 font-bold'>
-                    <img src={sam} alt='' />
-
+                  <img
+                    src={`/src/assets/imgs/${player.data.name}.jpg`}
+                    alt={player.data.name}
+                    className='w-[80px] rounded-full mt-4'
+                  />
+                  <span className='uppercase mt-2 text-lg font-extrabold'>
                     {player.data.name}
                   </span>
 
-                  <span className='w-1/4 flex justify-center items-center py-3 '>
-                    Pts: {player.data.points}
+                  <span className='font-semibold mb-3'>
+                    Total Points: {player.data.points}
                   </span>
+                  <div className='fishes w-full flex flex-col overflow-x-auto shadow-md '>
+                    <table className='w-full text-sm'>
+                      <thead className='text-xs text-gray-200 bg-purple-400'>
+                        <tr>
+                          <th className='p-3 w-3/4'>Species</th>
+                          <th className='p-3 text-center w-1/4 uppercase'>
+                            Qty
+                          </th>
+                        </tr>
+                      </thead>
+
+                      {Object.keys(player.data.fishes).map((fish) => {
+                        return (
+                          <tbody key={fish}>
+                            <tr className='odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700'>
+                              <th className='px-3 py-1 font-medium text-gray-900 whitespace-nowrap'>
+                                {fish}
+                              </th>
+                              <td className='text-gray-900 text-center w-1/4 px-3 py-1'>
+                                {player.data.fishes[fish]}
+                              </td>
+                            </tr>
+                          </tbody>
+                        );
+                      })}
+                    </table>
+                  </div>
                 </div>
               </div>
-              <div className='fishes w-full flex flex-col overflow-x-auto shadow-md '>
-                <table className='w-full text-sm'>
-                  <thead className='text-xs text-gray-200 bg-purple-400'>
-                    <tr>
-                      <th className='p-3 w-3/4'>Species</th>
-                      <th className='p-3 text-center w-1/4 uppercase'>Qty</th>
-                    </tr>
-                  </thead>
 
-                  {Object.keys(player.data.fishes).map((fish) => {
-                    return (
-                      <tbody key={fish}>
-                        <tr className='odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700'>
-                          <th className='px-3 py-1 font-medium text-gray-900 whitespace-nowrap'>
-                            {fish}
-                          </th>
-                          <td className='text-gray-900 text-center w-1/4 px-3 py-1'>
-                            {player.data.fishes[fish]}
-                          </td>
-                        </tr>
-                      </tbody>
-                    );
-                  })}
-                </table>
-              </div>
               {/* <button onClick={() => deletePlayer(player.id)}>
                         delete
                       </button> */}
