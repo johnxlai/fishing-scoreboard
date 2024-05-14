@@ -11,8 +11,8 @@ import React from 'react';
 const Form = ({ players }) => {
   return (
     <div className='w-full'>
-      <h2 className='text-xl font-bold bg-gray-700 mt-5 p-5 rounded-t-lg'>
-        LEADERBOARD
+      <h2 className='text-xl font-bold text-purple-300 my-5'>
+        HOUSEBOAT LEADERBOARD
       </h2>
       <ul className='flex flex-col flex-wrap justify-center gap-3 '>
         {players
@@ -20,26 +20,25 @@ const Form = ({ players }) => {
           .map((player, i) => (
             <li key={player.id} className='  '>
               <div className='w-full'>
-                <div className='flex bg-indigo-600'>
-                  <span className='w-1/4 border-r-2 border-indigo-500 flex justify-center items-center py-3'>
+                <div className='flex bg-green-300 text-green-800 font-bold'>
+                  <span className='flex justify-center items-center py-3 w-1/4 border-r-2 border-green-800 '>
                     {i + 1}
                   </span>
-                  <span className='uppercase w-2/4 border-r-2 border-indigo-500 flex justify-start ml-5 py-3'>
+                  <span className='flex justify-start ml-5 py-3 uppercase w-2/4 border-r-2 border-green-800 font-bold'>
                     {player.data.name}
                   </span>
 
-                  <span className='w-1/4 flex justify-center items-center py-3'>
-                    {' '}
+                  <span className='w-1/4 flex justify-center items-center py-3 '>
                     Total Pts: {player.data.points}
                   </span>
                 </div>
               </div>
-              <div className='fishes w-full flex flex-col overflow-x-auto shadow-md sm:rounded-lg'>
-                <table className='w-full text-sm text-left rtl:text-right  dark:text-gray-400'>
-                  <thead className='text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400'>
+              <div className='fishes w-full flex flex-col overflow-x-auto shadow-md '>
+                <table className='w-full text-sm'>
+                  <thead className='text-xs text-gray-200 bg-gray-800'>
                     <tr>
-                      <th className='px-6 py-3'>Fish</th>
-                      <th className='px-6 py-3'>Quantity</th>
+                      <th className='p-3 w-3/4'>Species</th>
+                      <th className='p-3 text-center w-1/4 uppercase'>Qty</th>
                     </tr>
                   </thead>
 
@@ -47,10 +46,10 @@ const Form = ({ players }) => {
                     return (
                       <tbody key={fish}>
                         <tr className='odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700'>
-                          <th className='px-6 py-4 font-medium text-gray-900 whitespace-nowrap'>
+                          <th className='px-3 py-1 font-medium text-gray-900 whitespace-nowrap'>
                             {fish}
                           </th>
-                          <td className='text-gray-900 px-6 py-4'>
+                          <td className='text-gray-900 text-center w-1/4 px-3 py-1'>
                             {player.data.fishes[fish]}
                           </td>
                         </tr>
