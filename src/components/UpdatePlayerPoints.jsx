@@ -18,26 +18,18 @@ const EditPlayer = ({ players }) => {
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
-    console.log(formData);
+    findCurrentPlayer();
   };
+
+  const findCurrentPlayer = () => {
+    console.log('current player', formData.selectedName);
+  };
+
   // a list of players
   // on player name change find the current player, update current points and player
-  function findCurrentPlayer(id) {
-    const player = players.find((player) => player.id === id);
-    setCurrentPlayer(player);
-    setCurrentPoints(player.data.points);
-    console.log(player, 'player');
-    console.log(player.data.points, 'points');
-  }
+
   // on fish caught change update the fish list
   // on submit update the player points and fish list
-
-  function handleIdChange(e) {
-    setId(e.target.value);
-    findCurrentPoints(e.target.value);
-    findCurrentPlayer(e.target.value);
-    updateFishList(e.target.value);
-  }
 
   //Update fish list
   function updateFishList() {
@@ -122,7 +114,7 @@ const EditPlayer = ({ players }) => {
         <button
           className='disabled:cursor-not-allowed disabled:opacity-80 disabled:bg-gray-500 disabled:border-gray-600 text-white hover:text-white border border-green-500 bg-green-500 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 w-full uppercase tracking-wider '
           type='submit'
-          disabled={!id || !newPoints}
+          // disabled={!id || !newPoints}
         >
           Add
         </button>
