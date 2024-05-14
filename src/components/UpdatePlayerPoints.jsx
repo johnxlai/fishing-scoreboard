@@ -22,13 +22,17 @@ const EditPlayer = ({ players }) => {
   //Update fish list
   function updateFishList(id) {
     const player = players.find((player) => player.id === id);
-    console.log(player.data.fishes, 'fishes');
-    const testFishList = {
+
+    //Update fish list
+    const updateFishPts = {
       ...player.data.fishes,
       bass: 19990,
     };
-    console.log(testFishList, 'newFishList');
-    setnewFishList(testFishList);
+
+    console.log(newPoints, 'newPoints');
+
+    console.log(updateFishPts, 'newFishList');
+    setnewFishList(updateFishPts);
   }
 
   function handleSubmit(e) {
@@ -91,13 +95,13 @@ const EditPlayer = ({ players }) => {
           className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mb-4'
         >
           <option value=''>Select a fish</option>
-          <option value={5}>Walleye Keeper 5</option>
-          <option value={4}>Muskie 4</option>
-          <option value={3}>Walleye 3</option>
-          <option value={2}>Pike 2</option>
-          <option value={1}>Bass 1</option>
-          <option value={-2}>Rock Bass -2</option>
-          <option value={3}>Longest Fish 3</option>
+          {Object.keys(fishPtsSystem).map((fish) => {
+            return (
+              <option key={fish} value={fishPtsSystem[fish]}>
+                {fish} {fishPtsSystem[fish]}
+              </option>
+            );
+          })}
         </select>
         <button
           className='disabled:cursor-not-allowed disabled:opacity-80 disabled:bg-gray-500 disabled:border-gray-600 text-white hover:text-white border border-green-500 bg-green-500 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 w-full uppercase tracking-wider '
