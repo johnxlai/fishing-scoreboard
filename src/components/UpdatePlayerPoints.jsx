@@ -8,30 +8,26 @@ const EditPlayer = ({ players }) => {
   const [newPoints, setNewPoints] = useState('');
   const [currentPoints, setCurrentPoints] = useState('');
   const [newFishList, setnewFishList] = useState({});
+  const [currentPlayer, setCurrentPlayer] = useState();
 
   //find current player point
   function findCurrentPoints(id) {
     const player = players.find((player) => player.id === id);
-    setCurrentPoints(player.data.points);
 
-    // console.log(player.data.points, 'current points');
+    setCurrentPoints(player.data.points);
+    updateFishList(player);
   }
 
-  //find current player and add the new fish the players fish list
-
   //Update fish list
-  function updateFishList(id) {
-    const player = players.find((player) => player.id === id);
-
+  function updateFishList(player) {
     //Update fish list
+
+    console.log(newPoints, 'nothing');
     const updateFishPts = {
       ...player.data.fishes,
-      bass: 19990,
+      beast: newPoints,
     };
 
-    console.log(newPoints, 'newPoints');
-
-    console.log(updateFishPts, 'newFishList');
     setnewFishList(updateFishPts);
   }
 
@@ -64,7 +60,7 @@ const EditPlayer = ({ players }) => {
           onChange={(e) => {
             setId(e.target.value);
             findCurrentPoints(e.target.value);
-            updateFishList(e.target.value);
+            // updateFishList(e.target.value);
           }}
           id='id'
           className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mb-3'
