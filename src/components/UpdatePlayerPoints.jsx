@@ -16,11 +16,10 @@ const EditPlayer = ({ players }) => {
 
   function handleSubmit(e) {
     e.preventDefault();
-
     const docRef = doc(db, 'players', id);
     updateDoc(docRef, {
       points: parseInt(currentPoints) + parseInt(newPoints),
-      fishies: { walleye: 1000 },
+      fishes: { ...fishes, walleye: 50, pike: 2000 },
     })
       .then((res) => {
         // console.log(res);

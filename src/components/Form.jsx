@@ -31,25 +31,22 @@ const Form = ({ players }) => {
                 </div>
               </div>
               <div className='fishes w-full flex flex-col overflow-x-auto shadow-md sm:rounded-lg'>
-                <table className='w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400'>
+                <table className='w-full text-sm text-left rtl:text-right  dark:text-gray-400'>
                   <thead className='text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400'>
                     <tr>
                       <th className='px-6 py-3'>Fish</th>
-                      <th>Quantity</th>
+                      <th className='px-6 py-3'>Quantity</th>
                     </tr>
                   </thead>
 
                   {Object.keys(player.data.fishes).map((fish) => {
                     return (
-                      <tbody>
-                        <tr
-                          key={fish}
-                          className='odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700'
-                        >
-                          <th className='px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white'>
+                      <tbody key={fish}>
+                        <tr className='odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700'>
+                          <th className='px-6 py-4 font-medium text-gray-900 whitespace-nowrap'>
                             {fish}
                           </th>
-                          <td className='px-6 py-4'>
+                          <td className='text-gray-900 px-6 py-4'>
                             {player.data.fishes[fish]}
                           </td>
                         </tr>
