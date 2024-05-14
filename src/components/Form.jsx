@@ -11,23 +11,29 @@ import React from 'react';
 const Form = ({ players }) => {
   return (
     <div className='w-full'>
-      <ul className='flex flex-col flex-wrap justify-center gap-3 mt-3'>
+      <h2 className='text-xl font-bold bg-gray-700 mt-5 p-5 rounded-t-lg'>
+        LEADERBOARD
+      </h2>
+      <ul className='flex flex-col flex-wrap justify-center gap-3 '>
         {players
           .sort((a, b) => b.data.points - a.data.points)
           .map((player, i) => (
             <li
               key={player.id}
-              className='bg-gray-700 flex flex-col gap-3 justify-between items-center p-3 rounded-lg text-white text-sm '
+              className=' flex flex-col gap-3 justify-between items-center  text-white text-sm '
             >
               <div className='w-full'>
-                <span className=''>{i + 1}</span>
-                <span className='font-bold uppercase'>{player.data.name}</span>
-
-                <div className='flex flex-col justify-center items-center bg-purple-800 p-2 rounded-sm'>
-                  <span className='text-purple-100 font-bold text-xs'>
-                    Pts:
+                <div className='rounded-lg bg-green-600'>
+                  <span className='font-bold'>{i + 1}</span>
+                  <span className='font-bold uppercase'>
+                    {player.data.name}
                   </span>
-                  <span className='font-bold'>{player.data.points}</span>
+                  <div className=''>
+                    <span className='text-purple-100 font-bold text-xs'>
+                      Pts:
+                    </span>
+                    <span className='font-bold'>{player.data.points}</span>
+                  </div>
                 </div>
               </div>
               <div className='fishes w-full flex flex-col overflow-x-auto shadow-md sm:rounded-lg'>

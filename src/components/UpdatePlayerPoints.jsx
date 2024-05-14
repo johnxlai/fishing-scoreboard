@@ -23,11 +23,9 @@ const EditPlayer = ({ players }) => {
     if (newFish === '5') fishName = 'walleyeKeeper';
     if (newFish === '4') fishName = 'muskie';
     if (newFish === '3') fishName = 'walleye';
-    if (newFish === '2') fishName = 'pike';
-    if (newFish === '1') fishName = 'bass';
+    if (newFish === '2') fishName = 'pikeBass';
     if (newFish === '-2') fishName = 'rockBass';
 
-    console.log(newFish, 'nothing');
     const updateFishPts = {
       ...player.data.fishes,
       [fishName]: 1 + (player.data.fishes[fishName] || 0),
@@ -91,7 +89,7 @@ const EditPlayer = ({ players }) => {
             updateFishList(e.target.value);
           }}
           id='species'
-          className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mb-4'
+          className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mb-4'
           disabled={!id}
         >
           <option value=''>Select a fish</option>
@@ -103,6 +101,7 @@ const EditPlayer = ({ players }) => {
             );
           })}
         </select>
+
         <button
           className='disabled:cursor-not-allowed disabled:opacity-80 disabled:bg-gray-500 disabled:border-gray-600 text-white hover:text-white border border-green-500 bg-green-500 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 w-full uppercase tracking-wider '
           type='submit'
