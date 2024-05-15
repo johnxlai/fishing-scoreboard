@@ -9,6 +9,9 @@ import React from 'react';
 //Add a reset button to reset the players and their points
 
 import che from '../assets/imgs/che.jpg';
+import sam from '../assets/imgs/sam.jpg';
+import john from '../assets/imgs/john.jpg';
+
 const Form = ({ players }) => {
   return (
     <div className='w-full'>
@@ -22,11 +25,23 @@ const Form = ({ players }) => {
             <li key={player.id} className=''>
               <div className='w-full bg-gray-600 text-white rounded-lg'>
                 <div className='flex flex-col justify-center items-center relative'>
-                  <span className='absolute z-10 left-2 top-2 bg-purple-600 p-3 rounded-lg'>
-                    {i + 1}
+                  <span className='absolute z-10 left-2 top-2 p-3  bg-purple-100'>
+                    {i === 0 ? (
+                      <span className='text-3xl'>🏆</span>
+                    ) : i === 1 ? (
+                      <span className='text-3xl'>🥈</span>
+                    ) : (
+                      <span className='text-3xl'>🥉</span>
+                    )}
                   </span>
                   <img
-                    src={che}
+                    src={
+                      player.data.name === 'Che'
+                        ? che
+                        : player.data.name === 'Sam'
+                        ? sam
+                        : john
+                    }
                     alt={player.data.name}
                     className='w-[80px] rounded-full mt-4'
                   />
