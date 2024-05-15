@@ -25,7 +25,7 @@ const Form = ({ players }) => {
             <li key={player.id} className=''>
               <div className='w-full bg-gray-600 text-white rounded-lg'>
                 <div className='flex flex-col justify-center items-center relative'>
-                  <span className='absolute z-10 left-2 top-2 p-3  bg-purple-100'>
+                  <span className='absolute z-10 right-0 top-0 p-3 bg-purple-100 rounded-tr-lg rounded-bl-lg'>
                     {i === 0 ? (
                       <span className='text-3xl'>🏆</span>
                     ) : i === 1 ? (
@@ -66,11 +66,11 @@ const Form = ({ players }) => {
                       {Object.keys(player.data.fishes).map((fish) => {
                         return (
                           <tbody key={fish}>
-                            <tr className='odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700'>
-                              <th className='px-3 py-1 font-medium text-gray-900 whitespace-nowrap'>
+                            <tr className='bg-purple-200  border-b'>
+                              <th className='px-3 py-1 font-medium text-gray-600 whitespace-nowrap'>
                                 {fish}
                               </th>
-                              <td className='text-gray-900 text-center w-1/4 px-3 py-1'>
+                              <td className='text-gray-600 text-center w-1/4 px-3 py-1'>
                                 {player.data.fishes[fish]}
                               </td>
                             </tr>
