@@ -12,6 +12,10 @@ import che from '../assets/imgs/che.jpg';
 import sam from '../assets/imgs/sam.jpg';
 import john from '../assets/imgs/john.jpg';
 
+function insertSpace(str) {
+  return str.replace(/([A-Z])/g, ' $1').trim();
+}
+
 const Form = ({ players }) => {
   return (
     <div className='w-full'>
@@ -57,7 +61,7 @@ const Form = ({ players }) => {
                       <thead className='text-xs text-gray-200 bg-purple-400'>
                         <tr>
                           <th className='p-3 w-3/4'>Species</th>
-                          <th className='p-3 text-center w-1/4 uppercase'>
+                          <th className='p-3 text-right w-1/4 uppercase'>
                             Qty
                           </th>
                         </tr>
@@ -67,10 +71,10 @@ const Form = ({ players }) => {
                         return (
                           <tbody key={fish}>
                             <tr className='bg-purple-200  border-b'>
-                              <th className='px-3 py-1 font-medium text-gray-600 whitespace-nowrap'>
-                                {fish}
+                              <th className='px-3 py-1 font-medium text-gray-600 whitespace-nowrap capitalize'>
+                                {insertSpace(fish)}
                               </th>
-                              <td className='text-gray-600 text-center w-1/4 px-3 py-1'>
+                              <td className='text-gray-600 text-right w-1/4 pr-5 py-1'>
                                 {player.data.fishes[fish]}
                               </td>
                             </tr>

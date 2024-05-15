@@ -23,7 +23,7 @@ const EditPlayer = ({ players }) => {
     if (newFish === '5') fishName = 'walleyeKeeper';
     if (newFish === '4') fishName = 'muskie';
     if (newFish === '3') fishName = 'walleye';
-    if (newFish === '2') fishName = 'pikeBass';
+    if (newFish === '2') fishName = 'pikeOrBass';
     if (newFish === '1') fishName = 'crappie';
     if (newFish === '-2') fishName = 'rockBass';
 
