@@ -29,15 +29,17 @@ const Form = ({ players }) => {
             <li key={player.id} className=''>
               <div className='w-full bg-gray-600 text-white rounded-lg'>
                 <div className='flex flex-col justify-center items-center relative'>
-                  <span className='absolute z-10 right-0 top-0 p-3 bg-purple-100 rounded-tr-lg rounded-bl-lg'>
-                    {i === 0 ? (
-                      <span className='text-3xl'>🏆</span>
-                    ) : i === 1 ? (
-                      <span className='text-3xl'>🥈</span>
-                    ) : (
-                      <span className='text-3xl'>🥉</span>
-                    )}
-                  </span>
+                  {player.data.points > 0 && (
+                    <span className='absolute z-10 right-0 top-0 p-3 bg-purple-100 rounded-tr-lg rounded-bl-lg'>
+                      {i === 0 ? (
+                        <span className='text-3xl'>🏆</span>
+                      ) : i === 1 ? (
+                        <span className='text-3xl'>🥈</span>
+                      ) : (
+                        <span className='text-3xl'>🥉</span>
+                      )}
+                    </span>
+                  )}
                   <img
                     src={
                       player.data.name === 'Che'
