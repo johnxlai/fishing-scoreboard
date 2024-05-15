@@ -56,33 +56,36 @@ const Form = ({ players }) => {
                   <span className='font-semibold mb-3'>
                     Total Points: {player.data.points}
                   </span>
-                  <div className='fishes w-full flex flex-col overflow-x-auto shadow-md '>
-                    <table className='w-full text-sm'>
-                      <thead className='text-xs text-gray-200 bg-purple-400'>
-                        <tr>
-                          <th className='p-3 w-3/4'>Species</th>
-                          <th className='p-3 text-right w-1/4 uppercase'>
-                            Qty
-                          </th>
-                        </tr>
-                      </thead>
 
-                      {Object.keys(player.data.fishes).map((fish) => {
-                        return (
-                          <tbody key={fish}>
-                            <tr className='bg-purple-200  border-b'>
-                              <th className='px-3 py-1 font-medium text-gray-600 whitespace-nowrap capitalize'>
-                                {insertSpace(fish)}
-                              </th>
-                              <td className='text-gray-600 text-right w-1/4 pr-5 py-1'>
-                                {player.data.fishes[fish]}
-                              </td>
-                            </tr>
-                          </tbody>
-                        );
-                      })}
-                    </table>
-                  </div>
+                  {Object.keys(player.data.fishes).length > 0 && (
+                    <div className='fishes w-full flex flex-col overflow-x-auto shadow-md '>
+                      <table className='w-full text-sm'>
+                        <thead className='text-xs text-gray-200 bg-purple-400'>
+                          <tr>
+                            <th className='p-3 w-3/4'>Species</th>
+                            <th className='p-3 text-right w-1/4 uppercase'>
+                              Qty
+                            </th>
+                          </tr>
+                        </thead>
+
+                        {Object.keys(player.data.fishes).map((fish) => {
+                          return (
+                            <tbody key={fish}>
+                              <tr className='bg-purple-200  border-b'>
+                                <th className='px-3 py-1 font-medium text-gray-600 whitespace-nowrap capitalize'>
+                                  {insertSpace(fish)}
+                                </th>
+                                <td className='text-gray-600 text-right w-1/4 pr-5 py-1'>
+                                  {player.data.fishes[fish]}
+                                </td>
+                              </tr>
+                            </tbody>
+                          );
+                        })}
+                      </table>
+                    </div>
+                  )}
                 </div>
               </div>
 
