@@ -20,7 +20,7 @@ const Form = ({ players }) => {
   return (
     <div className='w-full'>
       <h2 className='text-xl font-bold text-purple-300 mt-8 mb-4 text-center'>
-        HOUSEBOAT LEADERBOARD
+        2024 HOUSEBOAT LEADERBOARD
       </h2>
       <ul className='flex flex-col flex-wrap justify-center gap-3 '>
         {players
