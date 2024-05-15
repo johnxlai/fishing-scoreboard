@@ -8,6 +8,7 @@ import React from 'react';
 //Add local storage to store the players and their points
 //Add a reset button to reset the players and their points
 
+import che from '../assets/imgs/che.jpg';
 const Form = ({ players }) => {
   return (
     <div className='w-full'>
@@ -25,7 +26,7 @@ const Form = ({ players }) => {
                     {i + 1}
                   </span>
                   <img
-                    src={`/src/assets/imgs/${player.data.name}.jpg`}
+                    src={che}
                     alt={player.data.name}
                     className='w-[80px] rounded-full mt-4'
                   />
