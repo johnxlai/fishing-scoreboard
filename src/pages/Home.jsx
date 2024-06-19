@@ -4,11 +4,11 @@ import { db } from '../lib/init-firebase';
 import { playersCollectionRef } from '../lib/firestore.collections';
 
 // import CustomLink from '@/components/CustomLink';
-import Form from '@/components/Form';
+import Leaderboard from '@/components/Leaderboard';
 // import ListMovies from '@/components/ListMovies';
 // import RealTimePlayers from '@/components/RealTimePlayers';
 // import AddPlayer from '@/components/AddPlayer';
-import UpdatePlayerPoints from '@/components/UpdatePlayerPoints';
+import UpdatePlayerPointsForm from '@/components/UpdatePlayerPointsForm';
 import TotalPoints from '@/components/TotalPoints';
 
 export default function Home() {
@@ -45,8 +45,8 @@ export default function Home() {
         <section className='bg-dark'>
           <div className='flex flex-col items-center justify-center min-h-screen text-white layout max-w-lg'>
             <h1 className='mt-6'>Fishing Tournament</h1>
-            <UpdatePlayerPoints players={players} />
-            <Form players={players} />
+            <UpdatePlayerPointsForm players={players} />
+            <Leaderboard players={players} />
             <TotalPoints players={players} />
             {/* <RealTimePlayers /> */}
             {/* <AddPlayer /> */}
