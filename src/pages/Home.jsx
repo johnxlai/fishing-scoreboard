@@ -3,11 +3,7 @@ import { onSnapshot, doc, getDocs, deleteDoc } from 'firebase/firestore';
 import { db } from '../lib/init-firebase';
 import { playersCollectionRef } from '../lib/firestore.collections';
 
-// import CustomLink from '@/components/CustomLink';
 import Leaderboard from '@/components/Leaderboard';
-// import ListMovies from '@/components/ListMovies';
-// import RealTimePlayers from '@/components/RealTimePlayers';
-// import AddPlayer from '@/components/AddPlayer';
 import UpdatePlayerPointsForm from '@/components/UpdatePlayerPointsForm';
 import TotalPoints from '@/components/TotalPoints';
 
@@ -48,9 +44,6 @@ export default function Home() {
             <UpdatePlayerPointsForm players={players} />
             <Leaderboard players={players} />
             <TotalPoints players={players} />
-            {/* <RealTimePlayers /> */}
-            {/* <AddPlayer /> */}
-            {/* <Form /> */}
             {/* <footer className='my-3'>🐟🐟🐟</footer> */}
           </div>
         </section>
