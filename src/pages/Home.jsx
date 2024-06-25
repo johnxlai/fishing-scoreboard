@@ -40,7 +40,7 @@ export default function Home() {
       <main>
         <section className='bg-dark'>
           <div className='flex flex-col items-center justify-center min-h-screen text-white layout max-w-lg'>
-            <h1 className='mt-6'>Fishing Tournament t</h1>
+            <h1 className='mt-6'>Fishing Tournament</h1>
             <UpdatePlayerPointsForm players={players} />
             <Leaderboard players={players} />
             <TotalPoints players={players} />
